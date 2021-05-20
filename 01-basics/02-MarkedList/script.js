@@ -1,7 +1,6 @@
-// import Vue from './vendor/vue.esm.browser.js';
+import Vue from './vendor/vue.esm.browser.js';
 
 // From https://jsonplaceholder.typicode.com/comments
-/*
 const emails = [
   'Eliseo@gardner.biz',
   'Jayne_Kuhic@sydney.com',
@@ -29,6 +28,28 @@ const emails = [
   'Jeffery@juwan.us',
   'Isaias_Kuhic@jarrett.net',
 ];
-*/
 
 // Требуется создать Vue приложение
+
+let app = new Vue({
+  el: '#app',
+  data() {
+    return {
+      emails,
+      inputEmail: '',
+    };
+  },
+  computed: {
+    newEmails() {
+      const newEmails = this.emails.map(el => {
+        return {
+          text: el,
+          marked: el.indexOf(this.inputEmail) != -1 && this.inputEmail ? true : false,
+        }
+      });
+      return newEmails;
+    },
+  },
+});
+
+app.$mount('#app');
