@@ -7,6 +7,11 @@
 <body>
 
 <!-- Решение -->
+<div id="app">
+  <input v-for="id in radioButtons" type="radio" :value="id" v-model="picked">
+  <hr>
+  <h2>{{ titleMeetup }}</h2>
+</div>
 
 <script type="module" src="script.js"></script>
 </body>
