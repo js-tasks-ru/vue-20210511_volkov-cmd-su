@@ -4,7 +4,7 @@ const CounterButton = {
   // Компонент должен иметь входной параметр
   props: {
     count: {
-      title: String,
+      type: Number,
       default: 0,
     },
   },
@@ -15,11 +15,16 @@ const CounterButton = {
   },
 
   // Шаблон лучше держать максимально простым, а логику выносить в методы
+  methods: {
+    addCount() {
+      this.$emit('increment', this.count + 1);
+    },
+  },
 
   // Шаблон потребуется отредактировать
   template: `<button
     type="button"
-    @click="$emit('increment', count + 1)"
+    @click="addCount"
     >
   {{ count }}
   </button>`,
