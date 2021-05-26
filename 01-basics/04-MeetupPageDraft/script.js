@@ -45,3 +45,35 @@ const agendaItemIcons = {
 };
 
 // Требуется создать Vue приложение
+new Vue({
+  el: '#app',
+  data() {
+    return {
+      API_URL,
+      MEETUP_ID,
+      agendaItemIcons,
+      agendaItemDefaultTitles,
+      meetups: null,
+    }
+  },
+  mounted() {
+    this.getMeetup();
+  },
+  methods: {
+    getMeetup() {
+      let promise = fetch(this.API_URL + '/meetups/' + this.MEETUP_ID);
+      promise.then(response => {
+        return response.json();
+      }).then(data => {
+        this.meetups = data;
+      });
+    },
+  },
+  computed: {
+    setImage() {
+      return {
+        '--default-cover': this.meetups.imageId ? 'url(' + getImageUrlByImageId(this.meetups.imageId) + ')' : '',
+      }
+    }
+  }
+}).$mount('#app');
