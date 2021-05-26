@@ -72,7 +72,7 @@ new Vue({
   computed: {
     setImage() {
       return {
-        '--default-cover': this.meetups.imageId ? 'url(' + getImageUrlByImageId(this.meetups.imageId) + ')' : '',
+        '--bg-url': this.meetups.imageId ? 'url(' + getImageUrlByImageId(this.meetups.imageId) + ')' : '',
       }
     }
   }
