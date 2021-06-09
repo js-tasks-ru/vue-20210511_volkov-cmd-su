@@ -20,7 +20,7 @@ const MeetupView = {
     }
   },
   computed: {
-    getImage() {
+    image() {
       return getImageUrlByImageId(this.meetup.imageId);
     },
   },
@@ -28,7 +28,7 @@ const MeetupView = {
   template: `
     <div>
       <!-- meetup cover -->
-      <MeetupCover :title="meetup.title" :link="this.meetup.imageId ? getImage : ''"/>
+      <MeetupCover :title="meetup.title" :link="meetup.imageId ? image : ''"/>
       <div class="container">
         <div class="meetup">
           <div class="meetup__content">
