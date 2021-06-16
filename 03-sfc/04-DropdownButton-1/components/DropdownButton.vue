@@ -54,13 +54,11 @@ export default {
   data() {
     return {
       showHide: false,
-      someIcon: null,
     };
   },
   methods: {
     setVal(option) {
       this.$emit('change', option.value);
-      this.someIcon = option.icon;
       this.showHide = false;
     },
   },
@@ -68,10 +66,15 @@ export default {
     iconClass() {
       return this.options.some(el => el.icon);
     },
-    localTitle() {
-      let find = this.value ? this.options.find(el => el.value == this.value).text : '';
-      return find ? this.title + ' - ' + find : this.title;
+    chosenOption() {
+      return this.value ? this.options.find(el => el.value == this.value) : '';
     },
+    localTitle() {
+      return this.chosenOption ? this.title + ' - ' + this.chosenOption.text : this.title;
+    },
+    someIcon() {
+      return this.chosenOption ? this.chosenOption.icon : '';
+    }
   }
 };
 </script>
