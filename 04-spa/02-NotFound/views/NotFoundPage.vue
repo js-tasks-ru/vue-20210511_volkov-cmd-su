@@ -1,16 +1,5 @@
 <template>
   <div>
-    <header class="header">
-    <h1>
-      <a href="/"><img src="img/logo.svg" alt="Meetups" /></a>
-    </h1>
-    <nav>
-      <a href="login.html">Вход</a>
-      <a href="register.html">Регистрация</a>
-      <a href="meetup-form.html">Создать митап</a>
-    </nav>
-    </header>
-
     <main class="main">
       <div class="page page_404">
         <div class="container">
@@ -21,12 +10,6 @@
         </div>
       </div>
     </main>
-
-    <footer class="footer">
-      <div class="container">
-        © 2021. learn.javascript.ru <a href="https://learn.javascript.ru/courses/vue">Vue.js Course</a>
-      </div>
-    </footer>
   </div>
 </template>
 
