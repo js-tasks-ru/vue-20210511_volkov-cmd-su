@@ -1,15 +1,13 @@
 <template>
   <div>
-    <main class="main">
-      <div class="page page_404">
-        <div class="container">
-          <h1 class="text-center">
-            Страница не найдена
-            <span>404</span>
-          </h1>
-        </div>
+    <div class="page page_404">
+      <div class="container">
+        <h1 class="text-center">
+          Страница не найдена
+          <span>404</span>
+        </h1>
       </div>
-    </main>
+    </div>
   </div>
 </template>
 
