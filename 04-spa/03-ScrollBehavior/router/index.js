@@ -46,4 +46,21 @@ export const router = new VueRouter({
       ],
     },
   ],
+  scrollBehavior(to, from, savedPosition) {
+    window.console.log(to.matched);
+    // возвращаем требуемую позицию прокрутки
+    if (savedPosition) {
+      return savedPosition;
+    }
+    if (to.hash) {
+      return {
+        selector: to.hash,
+        behavior: 'smooth',
+      };
+    }
+    if (to.matched.some(record => record.meta.saveScrollPosition) && from.matched.some(record => record.meta.saveScrollPosition)) {
+      return false;
+    }
+    return { x: 0, y: 0 };
+  },
 });
