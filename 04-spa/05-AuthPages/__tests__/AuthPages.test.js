@@ -46,7 +46,7 @@ describe('spa/AuthPages', () => {
         stubs: { RouterLink: RouterLinkStub },
         mocks: {
           $router: {
-            push: () => {},
+            push: () => Promise.resolve(),
           },
           $route: {
             query: {},
@@ -112,7 +112,7 @@ describe('spa/AuthPages', () => {
         stubs: { RouterLink: RouterLinkStub },
         mocks: {
           $router: {
-            push: () => {},
+            push: () => Promise.resolve(),
           },
         },
       });
