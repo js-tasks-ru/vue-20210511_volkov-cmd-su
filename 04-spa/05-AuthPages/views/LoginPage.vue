@@ -1,15 +1,15 @@
 <template>
-  <form class="form">
+  <form class="form" @submit.prevent="submit">
     <div class="form-group">
       <label class="form-label">Email</label>
       <div class="input-group">
-        <input type="email" placeholder="demo@email" class="form-control" />
+        <input type="email" placeholder="demo@email" v-model="email" class="form-control" />
       </div>
     </div>
     <div class="form-group">
       <label class="form-label">Пароль</label>
       <div class="input-group">
-        <input type="password" placeholder="password" class="form-control" />
+        <input type="password" placeholder="password" v-model="password" class="form-control" />
       </div>
     </div>
     <div class="form__buttons">
@@ -23,10 +23,43 @@
 </template>
 
 <script>
-// import { login } from '../data';
+import { login } from '../data';
 
 export default {
   name: 'LoginPage',
+  data() {
+    return {
+      email: '',
+      password: '',
+    };
+  },
+  methods: {
+    submit() {
+      this.email = this.email.trim();
+      this.password = this.password.trim();
+      if (!this.email) {
+        alert('Требуется ввести Email');
+        return;
+      }
+      if (!this.password) {
+        alert('Требуется ввести пароль');
+        return;
+      }
+      let res = login(this.email, this.password);
+      res.then(data => {
+        if (data.error) {
+          alert(data.message);
+        } else {
+          alert(data.fullname);
+          if (this.$route.query.from) {
+            this.$router.push(this.$route.query.from).catch(()=>{});
+          } else {
+            this.$router.push('/').catch(()=>{});
+          }
+        }
+      });
+    },
+  },
 };
 </script>
 

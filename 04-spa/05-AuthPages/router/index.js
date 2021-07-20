@@ -3,7 +3,18 @@ import VueRouter from 'vue-router';
 export const routes = [
   {
     path: '/',
+    name: 'index',
     component: () => import('../views/IndexPage'),
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component: () => import('../views/LoginPage'),
+  },
+  {
+    path: '/register',
+    name: 'register',
+    component: () => import('../views/RegisterPage'),
   },
 ];
 
